@@ -12,4 +12,11 @@ class LoginView(View):
     def post(self, request):
         print(request.POST)
         data = login_authentication_query(request.POST)
-        return render(request, self.template_name)
+        if data:
+            request.session['id'] = data[0]
+            request.session['type'] = data[1]
+            # redirect to course
+        else:
+            return render(request, self.template_name, {
+                'error': 'Invalid email/password'
+            })

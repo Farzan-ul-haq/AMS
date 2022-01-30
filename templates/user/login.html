@@ -10,6 +10,10 @@
     <input type="radio" name="user_type" id="student" value='student'><label for="student">student</label>
     <input type="radio" name="user_type" id="teacher" value='teacher'><label for="teacher">teacher</label>
     <br><br>
+    {% if error %}
+    <span style='color: red'>{{error}}</span>
+    <br><br>
+    {% endif %}
     <input type="submit" value="Login">
 </form>
 
