@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'user.apps.UserConfig',
     'course.apps.CourseConfig',
+    'quiz.apps.QuizConfig'
 
 ]
 
