@@ -15,7 +15,7 @@ class LoginView(View):
         if data:
             request.session['user_id'] = str(data[0])
             request.session['user_type'] = str(data[1])
-            return render(request, self.template_name)
+            return redirect('course:list')
         else:
             return render(request, self.template_name, {
                 'error': 'Invalid email/password'
