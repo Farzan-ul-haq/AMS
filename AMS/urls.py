@@ -5,5 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('user.urls')),
     path('course/', include('course.urls')),
-    path('course/<int:course_id>/quiz/', include('quiz.urls')),
+    path('course/<course_id>/quiz/', include('quiz.urls')),
 ]
