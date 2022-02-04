@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -18,10 +18,6 @@ urlpatterns = [
         views.QuizCreateView.as_view(),
         name='create'
     ),
-    path('<int:quiz_id>/update/',
-        views.QuizUpdateView.as_view(),
-        name='update'
-    ),
     path('<int:quiz_id>/delete/',
         views.QuizDeleteView.as_view(),
         name='delete'
@@ -30,4 +26,6 @@ urlpatterns = [
         views.QuizSubmitView.as_view(),
         name='submit'
     ),
+    path('<int:quiz_id>/question/',
+        include('question.urls'))
 ]

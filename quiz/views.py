@@ -18,7 +18,7 @@ class QuizListView(View):
 class QuizCreateView(View):
     #Quiz Create View
     def get(self, request, course_id):
-        pass
+        return render(request, 'quiz/create.html')
 
     def post(self, request, course_id):
         pass
@@ -27,26 +27,17 @@ class QuizCreateView(View):
 class QuizDetailView(View):
     # Quiz Detail View
     def get(self, request, course_id, quiz_id):
-        pass
-
-
-class QuizUpdateView(View):
-    # Quiz Update View
-    def get(self, request, course_id, quiz_id):
-        pass
-
-    def post(self, request, course_id, quiz_id):
-        pass
+        return render(request, 'quiz/detail.html')
 
 
 class QuizDeleteView(View):
     # Quiz Delete View
-    def get(self, request, course_id, quiz_id):
-        pass
+    def post(self, request, course_id, quiz_id):
+        # delete quiz
+        return redirect('quiz:list', course_id)
 
 
 class QuizSubmitView(View):
-    
     def get(self, request, course_id, quiz_id):
         pass
 
