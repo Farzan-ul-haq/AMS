@@ -27,5 +27,5 @@ urlpatterns = [
         name='submit'
     ),
     path('<int:quiz_id>/question/',
-        include('question.urls'))
+        include('quiz.question.urls'))
 ]

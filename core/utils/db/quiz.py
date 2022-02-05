@@ -7,9 +7,16 @@ def get_course_quizes(course_id):
     """
     return run_query(query)
 
-#     SELECT * FROM Quiz Q
-# LEFT OUTER JOIN qUESTION QU ON (QU.QUIZ_ID = Q.quiz_id)
-# WHERE Q.course_id = 'CS311'
+def create_quiz(course_id, name):
+    query = f"""
+    INSERT INTO QUIZ (quiz_id, quiz_title, course_id)
+    VALUES (100, '{name}', '{course_id}');
+    """
+    return run_query(query)
 
+def get_quiz_id():
+    return run_query(f"""
+    # index func
+    """)
 
 
