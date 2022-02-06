@@ -13,7 +13,7 @@ class QuestionCreateView(View):
             template = 'question/blank.html'
         elif question_type == 'T&F':
             template = 'question/tf.html'
-        
+
         return render(request, template, {
             'question_type': question_type
         })

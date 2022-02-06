@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% block Body %}
-<h1>Quiz Detail</h1>
-<!-- <form action="." method="post">{%csrf_token%}
-<span>Name:</span> <input type="text" name="name">
-</form> -->
+<h1>Quiz({{quiz_id}})</h1>
+<a href="{% url 'quiz:delete' course_id quiz_id %}">
+    <button>Delete Quiz</button> 
+</a><br><br>
+<a href="{% url 'quiz:question:create' course_id quiz_id 'MCQs' %}">
+    <button>Add Question(MCQs)</button> 
+</a>
+<a href="{% url 'quiz:question:create' course_id quiz_id 'Blank' %}">
+    <button>Add Question(Blank)</button> 
+</a>
+<a href="{% url 'quiz:question:create' course_id quiz_id 'T&F' %}">
+    <button>Add Question(T&F)</button> 
+</a>
 {% endblock %}

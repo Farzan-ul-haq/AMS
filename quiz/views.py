@@ -35,13 +35,18 @@ class QuizCreateView(View):
 class QuizDetailView(View):
     # Quiz Detail View
     def get(self, request, course_id, quiz_id):
-        return render(request, 'quiz/detail.html')
+        # QUIZ WITH QUESTION AND CHOICES
+
+        return render(request, 'quiz/detail.html', {
+            'quiz_id': quiz_id,
+            'course_id': course_id
+        })
 
 
 class QuizDeleteView(View):
     # Quiz Delete View
-    def post(self, request, course_id, quiz_id):
-        # delete quiz
+    def get(self, request, course_id, quiz_id):
+        quiz.delete_quiz(quiz_id)
         return redirect('quiz:list', course_id)
 
 
