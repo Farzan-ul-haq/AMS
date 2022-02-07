@@ -1,0 +1,14 @@
+<h1>TF Question</h1>
+
+<form action="." method="POST">{% csrf_token %}
+    <label for="question">Question: </label>
+    <input type="text" id="question" name="question">
+    <br>
+    <br>
+    <label for="">Answer:</label>
+    <input type="radio" name="answer" id="T" value='T'><label for="T">True</label>
+    <input type="radio" name="answer" id="F" value='F'><label for="F">False</label>
+    <br>
+    <br>
+    <input type="submit" value="Add Question">
+</form>

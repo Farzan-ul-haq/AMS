@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from core.utils.db.course import get_student_courses, get_teacher_courses
-
+from core.utils.db import question
 
 class QuestionCreateView(View):
 
@@ -20,11 +20,23 @@ class QuestionCreateView(View):
 
     def post(self, request, course_id, quiz_id, question_type):
         if question_type == 'MCQs':
-            pass
+            question.create_question(
+                quiz_id,
+                'MCQS',
+                request.POST
+            )
         elif question_type == 'Blank':
-            pass
+            question.create_question(
+                quiz_id,
+                'BLANK',
+                request.POST
+            )
         elif question_type == 'T&F':
-            pass
+            question.create_question(
+                quiz_id,
+                'TF',
+                request.POST
+            )
         return redirect('quiz:detail', course_id, quiz_id)
 
 
