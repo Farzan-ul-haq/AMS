@@ -15,7 +15,8 @@ class QuestionCreateView(View):
             template = 'question/tf.html'
 
         return render(request, template, {
-            'question_type': question_type
+            'question_type': question_type,
+            'create': True
         })
 
     def post(self, request, course_id, quiz_id, question_type):
@@ -42,34 +43,30 @@ class QuestionCreateView(View):
 
 class QuestionUpdateView(View):
 
-    def get(self, request, course_id, quiz_id, question_type, question_id):
-        if question_type == 'MCQs':
+    def get(self, request, course_id, quiz_id, question_id):
+        q = question.get_question(question_id)
+        print(q)
+        context = {
+            'question_type': q[2],
+            'question': q,
+            'update': True,
+        }
+        if q[2] == 'MCQS':
             template = 'question/mcqs.html'
-        elif question_type == 'Blank':
+            context['choices'] = question.get_question_choices(question_id)
+        elif q[2] == 'BLANK':
             template = 'question/blank.html'
-        elif question_type == 'T&F':
+        elif q[2] == 'TF':
             template = 'question/tf.html'
-        
-        return render(request, template, {
-            'question_type': question_type
-        })
 
-    def post(self, request, course_id, quiz_id, question_type, question_id):
-        if question_type == 'MCQs':
-            pass
-        elif question_type == 'Blank':
-            pass
-        elif question_type == 'T&F':
-            pass
+        return render(request, template, context)
+
+    def post(self, request, course_id, quiz_id, question_id):
+        q = question.update_question(question_id, request.POST)
         return redirect('quiz:detail', course_id, quiz_id)
 
 
 class QuestionDeleteView(View):
-    def post(self, request, course_id, quiz_id, question_type, question_id):
-        if question_type == 'MCQs':
-            pass
-        elif question_type == 'Blank':
-            pass
-        elif question_type == 'T&F':
-            pass
+    def get(self, request, course_id, quiz_id, question_id):
+        question.delete_question(question_id)
         return redirect('quiz:detail', course_id, quiz_id)

@@ -33,5 +33,10 @@ def get_quiz_detail(quiz_id):
     """)[0]
 
 
+def qet_quiz_questions(quiz_id):
+    return run_query(f"""
+    SELECT * FROM QUESTION
+    WHERE QUIZ_ID={quiz_id}
+    """)
 
 

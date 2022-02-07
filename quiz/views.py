@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from core.utils.db import quiz
+from core.utils.db import quiz, question
 
 
 class QuizListView(View):
@@ -37,11 +37,18 @@ class QuizDetailView(View):
     def get(self, request, course_id, quiz_id):
         # QUIZ WITH QUESTION AND CHOICES
         q = quiz.get_quiz_detail(quiz_id)
-        print(q)
+        questions = quiz.qet_quiz_questions(quiz_id)
+        choices = {}
+        print(questions)
+        for qu in questions:
+            if qu[2] == 'MCQS':
+                choices[qu[0]] = question.get_question_choices(qu[0])
         return render(request, 'quiz/detail.html', {
             'quiz_id': quiz_id,
             'course_id': course_id,
-            'quiz': q
+            'quiz': q,
+            'choices': choices,
+            'questions': questions
         })
 
 
