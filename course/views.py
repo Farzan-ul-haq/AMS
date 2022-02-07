@@ -14,5 +14,6 @@ class CourseListView(View):
             courses = get_student_courses(request.session['user_id'])
 
         return render(request, self.template, {
-            'courses': courses
+            'courses': courses,
+            'user_type': request.session['user_type']
         })

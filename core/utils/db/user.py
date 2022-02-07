@@ -2,7 +2,7 @@ from .conn import run_query
 
 def login_authentication_query(data):
     if data['user_type'] == 'student':
-        query = """
+        query = f"""
         SELECT st_id FROM STUDENT 
         WHERE email='{data['email']}' AND password='{data['password']}' 
         """

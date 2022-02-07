@@ -9,6 +9,8 @@ def get_teacher_courses(teacher_id):
 
 
 def get_student_courses(student_id):
-    query = """
+    query = f"""
+    SELECT SC.course_id, C.
+    WHERE ST_ID={int(student_id)}
     """
-    run_query(query)
+    return run_query(query)

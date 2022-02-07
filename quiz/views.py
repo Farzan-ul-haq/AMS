@@ -36,7 +36,10 @@ class QuizDetailView(View):
     # Quiz Detail View
     def get(self, request, course_id, quiz_id):
         # QUIZ WITH QUESTION AND CHOICES
+
         q = quiz.get_quiz_detail(quiz_id)
+        students = quiz.get_quiz_students_score(quiz_id)
+        print(students)
         questions = quiz.qet_quiz_questions(quiz_id)
         choices = {}
         print(questions)
@@ -48,7 +51,8 @@ class QuizDetailView(View):
             'course_id': course_id,
             'quiz': q,
             'choices': choices,
-            'questions': questions
+            'questions': questions,
+            'students': students
         })
 
 

@@ -39,4 +39,12 @@ def qet_quiz_questions(quiz_id):
     WHERE QUIZ_ID={quiz_id}
     """)
 
+def get_quiz_students_score(quiz_id):
+    return run_query(f"""
+    SELECT SC.ST_ID, ST.NAME, SC.score 
+    FROM SCORE SC 
+    INNER JOIN STUDENT ST 
+    ON(SC.st_id = ST.st_id) 
+    WHERE SC.quiz_id={quiz_id} 
+    """)
 

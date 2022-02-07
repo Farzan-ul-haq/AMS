@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block Body %}
-
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
 {% load custom_tags %}
 
 
@@ -29,4 +33,20 @@
 <p><b>Answer:</b> {{question.4}}</p>
 <hr>
 {% endfor %}
+<hr>
+<table style="">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SCORE</th>
+    </tr>
+    {% for st in students %}
+    <tr>
+        <td>{{st.0}}</td>
+        <td>{{st.1}}</td>
+        <td>{%if st.2 %} {{st.2}}% {% else %} Not Attempt {% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
 {% endblock %}
