@@ -36,10 +36,12 @@ class QuizDetailView(View):
     # Quiz Detail View
     def get(self, request, course_id, quiz_id):
         # QUIZ WITH QUESTION AND CHOICES
-
+        q = quiz.get_quiz_detail(quiz_id)
+        print(q)
         return render(request, 'quiz/detail.html', {
             'quiz_id': quiz_id,
-            'course_id': course_id
+            'course_id': course_id,
+            'quiz': q
         })
 
 

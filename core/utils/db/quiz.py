@@ -10,7 +10,7 @@ def get_course_quizes(course_id):
 def create_quiz(course_id, name):
     query = f"""
     INSERT INTO QUIZ (quiz_id, quiz_title, course_id)
-    VALUES (101, '{name}', '{course_id}') 
+    VALUES (S_QUIZ_ID.NEXTVAL, '{name}', '{course_id}') 
     """
     return run_query(query)
 
@@ -21,10 +21,17 @@ def delete_quiz(quiz_id):
     return run_query(query)
 
 def get_quiz_id():
-    # return run_query(f"""
-    # # index func
-    # """)
-    return 100
+    return run_query(f"""
+    SELECT S_QUIZ_ID.NEXTVAL
+    FROM DUAL
+    """)[0][0] - 1
+
+def get_quiz_detail(quiz_id):
+    return run_query(f"""
+    SELECT * FROM QUIZ
+    WHERE QUIZ_ID={quiz_id}
+    """)[0]
+
 
 
 

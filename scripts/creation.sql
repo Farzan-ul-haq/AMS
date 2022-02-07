@@ -1,14 +1,13 @@
 -- Table Creation
-DROP TABLE Teacher;
-DROP TABLE Course;
-DROP TABLE Student;
-DROP TABLE Student_Course;
-DROP TABLE Quiz;
-DROP TABLE Question;
-DROP TABLE Choices;
 DROP TABLE Score;
+DROP TABLE Choices;
+DROP TABLE Question;
+DROP TABLE Quiz;
+DROP TABLE Student_Course;
+DROP TABLE Course;
+DROP TABLE Teacher;
+DROP TABLE Student;
 -- Teacher
-
 CREATE TABLE Teacher (
     th_id number(10) NOT NULL PRIMARY KEY,
     name varchar(255) NOT NULL,
@@ -88,3 +87,27 @@ CREATE TABLE Score (
     CONSTRAINT score_quiz_FK1 FOREIGN KEY(quiz_id)
         REFERENCES Quiz(quiz_id)
 );
+
+-- Indexes
+-- FOr Quiz ID
+DROP SEQUENCE S_QUIZ_ID;
+CREATE SEQUENCE S_QUIZ_ID
+INCREMENT BY 1
+START WITH 1;
+
+-- FOr Question Id
+DROP SEQUENCE S_QUESTION_ID;
+CREATE SEQUENCE S_QUESTION_ID
+INCREMENT BY 1
+START WITH 1;
+
+-- For Choices
+DROP SEQUENCE S_CHOICES_ID;
+CREATE SEQUENCE S_CHOICES_ID
+INCREMENT BY 1
+START WITH 1;
+
+-- Trigger
+
+
+

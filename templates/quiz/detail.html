@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block Body %}
-<h1>Quiz({{quiz_id}})</h1>
+<h1>{{quiz.1}}({{quiz.2}})</h1>
 <a href="{% url 'quiz:delete' course_id quiz_id %}">
     <button>Delete Quiz</button> 
 </a><br><br>
