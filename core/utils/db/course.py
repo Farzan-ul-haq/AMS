@@ -10,7 +10,8 @@ def get_teacher_courses(teacher_id):
 
 def get_student_courses(student_id):
     query = f"""
-    SELECT SC.course_id, C.
-    WHERE ST_ID={int(student_id)}
+    SELECT SC.course_id, C.name
+    FROM Student_Course SC INNER JOIN Course C ON(SC.course_id = C.course_id)
+    WHERE SC.ST_ID={int(student_id)}
     """
     return run_query(query)

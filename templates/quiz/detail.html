@@ -24,7 +24,7 @@ table, th, td {
 </a>
 <br><br>
 {% for question in questions %}
-<p><b>Q{{question.0}}): {{question.1}}</b> (<a href="{% url 'quiz:question:update' course_id quiz_id question.0 %}">Edit</a> | <a href="">Delete</a>)</p>
+<p><b>Q{{question.0}}): {{question.1}}</b> (<a href="{% url 'quiz:question:update' course_id quiz_id question.0 %}">Edit</a> | <a href="{% url 'quiz:question:delete' course_id quiz_id question.0 %}">Delete</a>)</p>
     {% if question.2 == 'MCQS' %}
         {% for choice in choices|get_item:question.0  %}
             <p>&emsp; <b>{{choice.3}}:</b> {{choice.1}}</p>
@@ -34,7 +34,7 @@ table, th, td {
 <hr>
 {% endfor %}
 <hr>
-<table style="">
+<table>
     <tr>
         <th>ID</th>
         <th>NAME</th>

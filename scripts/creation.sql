@@ -114,12 +114,17 @@ CREATE OR REPLACE TRIGGER T_QUIZ
 BEFORE DELETE OR INSERT ON QUIZ
 FOR EACH ROW
 BEGIN
-IF DELETING THEN
+IF INSERTING THEN
+    INSERT INTO SCORE(quiz_id, st_id)
+    SELECT Q.quiz_id, SC.st_id
+    FROM QUIZ Q, Student_Course SC
+    WHERE Q.course_id=SC.course_id AND Q.quiz_id = :new.quiz_id;
+ELSIF DELETING THEN
     DELETE FROM QUESTION
     WHERE quiz_id = :old.quiz_id;
     DELETE FROM SCORE
     WHERE QUIZ_id = :old.quiz_id;
-  END IF;
+END IF;
 END;
 /
 DROP TRIGGER T_QUESTION;

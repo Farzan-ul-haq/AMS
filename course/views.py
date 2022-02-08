@@ -12,7 +12,8 @@ class CourseListView(View):
             courses = get_teacher_courses(request.session['user_id'])
         elif request.session['user_type'] == 'student':
             courses = get_student_courses(request.session['user_id'])
-
+        
+        print(courses)
         return render(request, self.template, {
             'courses': courses,
             'user_type': request.session['user_type']
