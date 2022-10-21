@@ -83,12 +83,18 @@ WSGI_APPLICATION = 'AMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+ORACLE_DB_USER = "SYSTEM"
+ORACLE_DB_PASSWORD = '3143'
+ORACLE_DB_HOST = 'localhost'
+ORACLE_DB_PORT = 1521
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

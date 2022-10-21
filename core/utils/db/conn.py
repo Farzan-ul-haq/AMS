@@ -1,10 +1,13 @@
 import cx_Oracle
+
+from django.conf import settings
+
 con = {
-    'user': 'SYSTEM',
-    'password': '3143',
+    'user': settings.ORACLE_DB_USER,
+    'password': settings.ORACLE_DB_PASSWORD,
     'dsn': str(cx_Oracle.makedsn(
-        host='localhost',
-        port=1521
+        host=settings.ORACLE_DB_HOST,
+        port=settings.ORACLE_DB_PORT
     ))
 }
 def run_query(query):
