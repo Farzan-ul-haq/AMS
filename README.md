@@ -5,7 +5,7 @@ Install Dependencies
 ```
 pip install -r requirements.txt
 ```
-For Oracle Connection Change The connection settings by changing username,password.`core/utils/db/conn.py`
+For Oracle Connection Change The connection credentials from `AMS/settings.py`
 
 Run the File Manually by copying it's content into sql.
 `scripts/creation.sql`
